@@ -285,7 +285,9 @@ with open(config_path, "w") as f:
   f.write(config)
 
 # Finally do the install!
-run(["nixos-install", "--no-root-passwd"])
+# run(["nixos-install", "--no-root-passwd"])
+# included configuration file, plus set root
+run(["nixos-install", "-I nixos-config=./configuration.nix"])
 
 print("""
 ================================================================================
