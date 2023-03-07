@@ -259,7 +259,8 @@ print(f"Detected {(ram_bytes / 1024 / 1024 / 1024):.3f} Gb of RAM...")
 # The Ubuntu guidelines say max(1GB, sqrt(RAM)) for swap on computers not
 # utilizing hibernation. In the case of hibernation, max(1GB, RAM + sqrt(RAM)).
 # See https://help.ubuntu.com/community/SwapFaq.
-swap_bytes = max(int(sqrt(ram_bytes)), 1024 * 1024 * 1024)
+# swap_bytes = max(int(sqrt(ram_bytes)), 1024 * 1024 * 1024)
+swap_bytes = round(int(sqrt(ram_bytes)))
 swap_mb = int(swap_bytes / 1024 / 1024)
 hibernation_swap_bytes = swap_bytes + ram_bytes
 hibernation_swap_mb = int(hibernation_swap_bytes / 1024 / 1024)
