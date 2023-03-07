@@ -214,21 +214,7 @@ config = """\
 
 """ + config
 
-# home-manager
-# config = re.sub(r"{ config, pkgs, \.\.\. }:\s+{", f"""\
-# {{ config, pkgs, ...}}:
-#
-# let
-#  home-manager = fetchTarball "https://github.com/nix-community/home-manager/archive/release-21.05.tar.gz";
-# in
-# {{
-  # Your home-manager configuration! Check out https://rycee.gitlab.io/home-manager/ for all possible options.
-#  home-manager.users.{username} = {{ pkgs, ... }}: {{
-#    home.packages = with pkgs; [ hello ];
-#    programs.starship.enable = true;
-#  }};
-# """, config)
-# config = re.sub(r"imports =\s*\[", """imports = [ "${home-manager}/nixos" \n""", config)
+
 
 # Non-EFI systems require boot.loader.grub.device to be specified.
 if not efi:
@@ -308,9 +294,6 @@ Getting started:
 
   * Your system configuration lives in `/etc/nixos/configuration.nix`. You can
     edit that file, run `sudo nixos-rebuild switch`, and you're all set!
-#  * home-manager is the way to go for installing user applications, and managing
-#    your user environment. Edit the home-manager section in
-#    `/etc/nixos/configuration.nix` and then `home-manager switch` to get going.
   * nix-shell is your friend. `nix-shell -p curl jq` drops you right into a
     shell with all of your favorite programs.
   * The NixOS community hangs out at https://discourse.nixos.org/. Feel free to
